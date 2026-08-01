@@ -5,10 +5,15 @@ echo "Checking for changes..."
 git add -A
 
 if git diff --cached --quiet; then
+  echo "No new edits to commit."
+else
+  git commit -q -m "Update site $(date +'%Y-%m-%d %H:%M')"
+fi
+
+if [ -z "$(git log origin/main..HEAD 2>/dev/null)" ]; then
   echo ""
   echo "No changes to publish — everything is already up to date."
 else
-  git commit -q -m "Update site $(date +'%Y-%m-%d %H:%M')"
   echo "Pushing to GitHub..."
   if git push; then
     echo ""
