@@ -306,7 +306,8 @@
   }
 
   /* ---- Moments from STAR Lab: masonry gallery ---- */
-  .gallery-masonry{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .gallery-masonry{display:flex; flex-wrap:wrap; align-items:flex-start; gap:22px;}
+  .gallery-col{display:flex; flex-direction:column; gap:22px; flex:1 1 0; min-width:0;}
   .gallery-item{position:relative; display:block; width:100%; margin:0; padding:0; border:none; background:none;
     border-radius:14px; overflow:hidden; cursor:pointer;
     box-shadow:0 18px 40px rgba(6,2,10,0.35); isolation:isolate; contain:paint;}
@@ -338,8 +339,8 @@
     background:linear-gradient(to top, rgba(10,4,16,0.88), transparent); opacity:.72;}
   .gallery-caption{position:absolute; left:18px; right:18px; bottom:15px; z-index:2; text-align:left;
     font-family:var(--font-sans); font-size:13px; font-weight:600; letter-spacing:.02em; color:var(--gold-bright);}
-  @media (max-width:900px){.gallery-masonry{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:560px){.gallery-masonry{grid-template-columns:1fr;}}
+  @media (max-width:900px){.gallery-col{flex-basis:calc(50% - 11px);}}
+  @media (max-width:560px){.gallery-masonry{flex-direction:column;} .gallery-col{flex-basis:auto;}}
 
   /* ---- Lightbox ---- */
   .lightbox{position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center;
@@ -428,55 +429,61 @@
           </div>
           <div class="gallery-masonry">
 
-            <button type="button" class="gallery-item" style="--ar:3/4;" data-caption="Placeholder Caption (2028)">
-              <span class="gallery-inner">
-                <span class="gallery-ph ph-5">
-                  <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+            <div class="gallery-col">
+              <button type="button" class="gallery-item" style="--ar:3/4;" data-caption="Placeholder Caption (2028)">
+                <span class="gallery-inner">
+                  <span class="gallery-ph ph-1">
+                    <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+                  </span>
+                  <span class="gallery-overlay"></span>
+                  <span class="gallery-caption">Placeholder Caption (2028)</span>
                 </span>
-                <span class="gallery-overlay"></span>
-                <span class="gallery-caption">Placeholder Caption (2028)</span>
-              </span>
-            </button>
+              </button>
 
-            <button type="button" class="gallery-item" style="--ar:4/3;" data-caption="Placeholder Caption (2027)">
-              <span class="gallery-inner">
-                <span class="gallery-ph ph-4">
-                  <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+              <button type="button" class="gallery-item" style="--ar:4/3;" data-caption="Placeholder Caption (2026)">
+                <span class="gallery-inner">
+                  <span class="gallery-ph ph-4">
+                    <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+                  </span>
+                  <span class="gallery-overlay"></span>
+                  <span class="gallery-caption">Placeholder Caption (2026)</span>
                 </span>
-                <span class="gallery-overlay"></span>
-                <span class="gallery-caption">Placeholder Caption (2027)</span>
-              </span>
-            </button>
+              </button>
+            </div>
 
-            <button type="button" class="gallery-item" style="--ar:1/1;" data-caption="Placeholder Caption (2027)">
-              <span class="gallery-inner">
-                <span class="gallery-ph ph-3">
-                  <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+            <div class="gallery-col">
+              <button type="button" class="gallery-item" style="--ar:4/5;" data-caption="Placeholder Caption (2027)">
+                <span class="gallery-inner">
+                  <span class="gallery-ph ph-2">
+                    <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+                  </span>
+                  <span class="gallery-overlay"></span>
+                  <span class="gallery-caption">Placeholder Caption (2027)</span>
                 </span>
-                <span class="gallery-overlay"></span>
-                <span class="gallery-caption">Placeholder Caption (2027)</span>
-              </span>
-            </button>
+              </button>
 
-            <button type="button" class="gallery-item" style="--ar:4/5;" data-caption="Placeholder Caption (2026)">
-              <span class="gallery-inner">
-                <span class="gallery-ph ph-2">
-                  <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+              <button type="button" class="gallery-item" style="--ar:3/4;" data-caption="Placeholder Caption (2026)">
+                <span class="gallery-inner">
+                  <span class="gallery-ph ph-5">
+                    <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+                  </span>
+                  <span class="gallery-overlay"></span>
+                  <span class="gallery-caption">Placeholder Caption (2026)</span>
                 </span>
-                <span class="gallery-overlay"></span>
-                <span class="gallery-caption">Placeholder Caption (2026)</span>
-              </span>
-            </button>
+              </button>
+            </div>
 
-            <button type="button" class="gallery-item" style="--ar:3/4;" data-caption="Placeholder Caption (2026)">
-              <span class="gallery-inner">
-                <span class="gallery-ph ph-1">
-                  <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+            <div class="gallery-col">
+              <button type="button" class="gallery-item" style="--ar:1/1;" data-caption="Placeholder Caption (2027)">
+                <span class="gallery-inner">
+                  <span class="gallery-ph ph-3">
+                    <svg class="gallery-ph-star" viewBox="0 0 24 24"><path d="M12 0C12.8 6.2 14 9.2 24 12C14 14.8 12.8 17.8 12 24C11.2 17.8 10 14.8 0 12C10 9.2 11.2 6.2 12 0Z"/></svg>
+                  </span>
+                  <span class="gallery-overlay"></span>
+                  <span class="gallery-caption">Placeholder Caption (2027)</span>
                 </span>
-                <span class="gallery-overlay"></span>
-                <span class="gallery-caption">Placeholder Caption (2026)</span>
-              </span>
-            </button>
+              </button>
+            </div>
 
           </div>
         </div>
