@@ -337,6 +337,7 @@
   .orbit-core-label{font-family:'EB Garamond', var(--font-serif), serif; font-size:1.6rem; font-weight:500; color:var(--gold-bright); letter-spacing:.02em;}
 
   .orbit-q{position:absolute; top:50%; left:50%; width:0; height:0; z-index:2;
+    transform:rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle)));
     animation:orbit-spin 600s linear infinite; animation-play-state:running;}
   @keyframes orbit-spin{
     from{transform:rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle)));}
